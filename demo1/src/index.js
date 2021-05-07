@@ -1,3 +1,6 @@
+/**
+ * 通过读取文件html模板
+ */
 const Vue = require('vue')
 const Koa = require('koa')
 const fs = require('fs')

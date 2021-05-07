@@ -1,14 +1,22 @@
 import Vue from 'vue'
-import VueRouter from "vue-router"
-Vue.use(VueRouter)
+import Router from "vue-router"
+Vue.use(Router)
 
 export function createRouter() {
-  return new VueRouter({
+  return new Router({
     mode: 'history',
     routes: [
       {
         path: '/home',
-        component: resolve => require('./com')
+        component: resolve => require(['./components/home'], resolve)
+      },
+      {
+        path: '/item',
+        component: resolve => require(['./components/item'], resolve)
+      },
+      {
+        path: '*',
+        redirect: '/home'
       }
     ]
   })
