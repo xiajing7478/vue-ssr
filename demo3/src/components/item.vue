@@ -1,5 +1,8 @@
 <template>
-    <div>item页 请求数据结果：{{ item }}</div>
+    <div>
+      <div>item页 请求数据结果</div>
+      <p v-for="(option, idx) in item" :key="idx">{{option.text}}</p> 
+    </div>
 </template>
 
 <script>
@@ -10,13 +13,12 @@
     // 注意：asyncData函数会在组件实例化之前被调用。因此不能使用this，需要将store和路由信息作为参数传递进去。
     asyncData({ store, route }) {
       // return store.dispatch('fetchItem', route.params.id)
-      return store.dispatch('fetchItem', 'name');
+      return store.dispatch('fetchItem', 'ReceiptVerifyDataStatusEnum');
     },
     computed: {
       item() {
-        console.log(this.$store.state);
+        console.log(JSON.stringify(this.$store.state.items));
         return this.$store.state.items;
-        // return this.$store.state.items[this.$route.params.id]
       }
     }
   }
